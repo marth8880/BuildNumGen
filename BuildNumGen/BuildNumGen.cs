@@ -18,28 +18,61 @@ namespace BuildNumGen
         }
 
         public string buildNum;
+        public string yearsSinceProjectStart;
+        public string releaseNum;
 
         private void BuildNumGen_Load(object sender, EventArgs e)
         {
+            txt_YPS.Text = Properties.Settings.Default.YearsSinceProjectStart;
+            txt_ReleaseNum.Text = Properties.Settings.Default.ReleaseNum;
 
+            GenerateBuildNumber(true);
         }
 
-        private void btn_Generate_Click(object sender, EventArgs e)
+        private string GenerateBuildNumber(bool copyToClipboard)
         {
             DateTime date = DateTime.Now;
             string month = date.Month.ToString("00");
             string day = date.Day.ToString("00");
-            string releaseNum = Properties.Settings.Default.ReleaseNum.ToString("00");
-            string yearsSinceRelease = Properties.Settings.Default.YearsSinceRelease.ToString();
 
-            if (yearsSinceRelease == "0")
+            if (yearsSinceProjectStart == "0")
             {
-                yearsSinceRelease = "";
+                yearsSinceProjectStart = "";
             }
 
-            buildNum = yearsSinceRelease + month + day + "/" + releaseNum;
+            buildNum = yearsSinceProjectStart + month + day + "/" + releaseNum;
 
-            lbl_BuildNum.Text = buildNum;
+            txt_BuildNum.Text = buildNum;
+
+            if (copyToClipboard)
+            {
+                Clipboard.SetText(buildNum);
+            }
+
+            return buildNum;
+        }
+
+        private void txt_YPS_TextChanged(object sender, EventArgs e)
+        {
+            yearsSinceProjectStart = txt_YPS.Text;
+            Properties.Settings.Default.YearsSinceProjectStart = yearsSinceProjectStart;
+            Properties.Settings.Default.Save();
+
+            GenerateBuildNumber(false);
+        }
+
+        private void txt_ReleaseNum_TextChanged(object sender, EventArgs e)
+        {
+            releaseNum = txt_ReleaseNum.Text;
+            Properties.Settings.Default.ReleaseNum = releaseNum;
+            Properties.Settings.Default.Save();
+
+            GenerateBuildNumber(false);
+        }
+
+        private void btn_Generate_Click(object sender, EventArgs e)
+        {
+            GenerateBuildNumber(true);
         }
     }
 }

@@ -2,11 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BuildNumGen.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="YearsSinceRelease" Type="System.Int32" Scope="User">
+    <Setting Name="YearsSinceProjectStart" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ReleaseNum" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">1</Value>
+    <Setting Name="ReleaseNum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">01</Value>
     </Setting>
   </Settings>
 </SettingsFile>

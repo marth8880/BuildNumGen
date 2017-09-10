@@ -26,21 +26,21 @@ namespace BuildNumGen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int YearsSinceRelease {
+        public string YearsSinceProjectStart {
             get {
-                return ((int)(this["YearsSinceRelease"]));
+                return ((string)(this["YearsSinceProjectStart"]));
             }
             set {
-                this["YearsSinceRelease"] = value;
+                this["YearsSinceProjectStart"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public float ReleaseNum {
+        [global::System.Configuration.DefaultSettingValueAttribute("01")]
+        public string ReleaseNum {
             get {
-                return ((float)(this["ReleaseNum"]));
+                return ((string)(this["ReleaseNum"]));
             }
             set {
                 this["ReleaseNum"] = value;
